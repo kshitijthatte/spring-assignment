@@ -10,8 +10,8 @@ public class ProductDaoMapImpl implements ProductDao{
 	public ProductDaoMapImpl() {
 		productsMap=new HashMap<Integer, Product>();
 		productsMap.put(1, new Product(1, "laptop", new BigDecimal(55000), true));
-		productsMap.put(2, new Product(1, "Mouse pad", new BigDecimal(550), true));
-		productsMap.put(3, new Product(1, "Torch", new BigDecimal(520), false));
+		productsMap.put(2, new Product(2, "Mouse pad", new BigDecimal(550), true));
+		productsMap.put(3, new Product(3, "Torch", new BigDecimal(520), false));
 		counter=3;
 		
 		

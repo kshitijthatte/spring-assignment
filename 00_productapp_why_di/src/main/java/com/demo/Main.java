@@ -29,12 +29,12 @@ import org.springframework.core.io.ClassPathResource;
 public class Main {
 	public static void main(String[] args) {
 
-//		ApplicationContext applicationContext=
-//				new ClassPathXmlApplicationContext("demo.xml");
+		ApplicationContext applicationContext=
+				new ClassPathXmlApplicationContext("demo.xml");
 //		ApplicationContext applicationContext=
 //				new FileSystemXmlApplicationContext("demo.xml");
-		AnnotationConfigApplicationContext applicationContext=
-				new AnnotationConfigApplicationContext("demo.xml");
+//		AnnotationConfigApplicationContext applicationContext=
+//				new AnnotationConfigApplicationContext("demo.xml");
 		
 //		BeanFactory applicationContext=new XmlBeanFactory(new ClassPathResource("demo.xml"));
 //		

@@ -17,7 +17,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 	private Connection connection;
 
 	public ProductDaoJdbcImpl() {
-		connection = ConnectionFactory.getConnection(); // :(
+		connection = ConnectionFactory.getConnection(); 
 	}
 
 	@Override
@@ -49,8 +49,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 		Product product = null;
 
 		try {
-			PreparedStatement preparedStatement = 
-					connection.prepareStatement("select * from product_table where id=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from product_table where id=?");
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
@@ -71,15 +70,14 @@ public class ProductDaoJdbcImpl implements ProductDao {
 	@Override
 	public Product addProduct(Product product) {
 		try {
-			PreparedStatement preparedStatement = 
-			connection.
-			prepareStatement("insert into product_table(name, price, isAvailable) values(?,?,?)");
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("insert into product_table(name, price, isAvailable) values(?,?,?)");
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setBigDecimal(2, product.getPrice());
 			preparedStatement.setBoolean(3, product.isAvailable());
-			
+
 			preparedStatement.executeUpdate();
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		return product;
@@ -87,15 +85,13 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
 	@Override
 	public Product deleteProduct(Integer id) {
-		Product product=getById(id);
+		Product product = getById(id);
 		try {
-			
-			PreparedStatement preparedStatement = 
-			connection.
-			prepareStatement("delete from product_table where id=?");
+
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from product_table where id=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		return product;
@@ -103,17 +99,16 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
 	@Override
 	public Product updateProduct(Integer id, Product product) {
-		Product productToUpdate=getById(id);
+		Product productToUpdate = getById(id);
 		try {
-			
-			PreparedStatement preparedStatement = 
-			connection.
-			prepareStatement("update product_table set price =? ,isAvailable=? where id=?");
+
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("update product_table set price =? ,isAvailable=? where id=?");
 			preparedStatement.setBigDecimal(1, product.getPrice());
 			preparedStatement.setBoolean(2, product.isAvailable());
 			preparedStatement.setInt(3, id);
 			preparedStatement.executeUpdate();
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 		return product;

@@ -16,10 +16,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-public class Product /* implements BeanNameAware, ApplicationContextAware */ /*
-																				 * implements InitializingBean,
-																				 * DisposableBean
-																				 */{
+public class Product implements BeanNameAware, ApplicationContextAware /*
+																		 * implements InitializingBean, DisposableBean
+																		 */ {
 	private Integer id;
 	private String name;
 	private BigDecimal price;
@@ -29,21 +28,20 @@ public class Product /* implements BeanNameAware, ApplicationContextAware */ /*
 	public void myInitProductAnnotation() {
 		System.out.println("myInitProduct Annotation is called");
 	}
-	
+
 	@PreDestroy
 	private void myPreDestroyProductAnnotation() {
 		System.out.println("myPreDestroyProduct Annotation is called");
 	}
-	
 
 	private void myInitProduct() {
 		System.out.println("myInitProduct xml is called");
 	}
-	
+
 	private void myPreDestroyProduct() {
 		System.out.println("myPreDestroyProduct xml is called");
 	}
-	
+
 	public Product() {
 		System.out.println("default ctr is called");
 	}
@@ -85,8 +83,7 @@ public class Product /* implements BeanNameAware, ApplicationContextAware */ /*
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", isAvailable=" + isAvailable + "]";
 	}
-	
-	
+
 //
 //	@Override
 //	public void destroy() throws Exception {
@@ -98,16 +95,14 @@ public class Product /* implements BeanNameAware, ApplicationContextAware */ /*
 //		System.out.println("public void afterPropertiesSet() throws Exception ");
 //	}
 
-//	@Override
-//	public void setBeanName(String name) {
-//		System.out.println("public void setBeanName(String name) is called");
-//	}
-//
-//	@Override
-//	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-//		System.out.println("public void setApplicationContext(ApplicationContext applicationContext)");
-//	}
+	@Override
+	public void setBeanName(String name) {
+		System.out.println("public void setBeanName(String name) is called");
+	}
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.out.println("public void setApplicationContext(ApplicationContext applicationContext)");
+	}
 
-	
 }
